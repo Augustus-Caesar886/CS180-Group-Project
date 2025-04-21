@@ -12,4 +12,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 
 ADD_EXECUTABLE(MajorMind
     src/main.cpp
+    src/Account.cpp
+    src/Teacher.cpp
 )

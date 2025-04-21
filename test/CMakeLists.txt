@@ -9,6 +9,8 @@ ADD_SUBDIRECTORY(googletest)
 ADD_EXECUTABLE(MajorMindTests
     ../src/Account.cpp
     AccountTests.cpp
+    ../src/Teacher.cpp
+    TeacherTests.cpp
 )
 
 target_link_libraries(MajorMindTests gmock gtest gtest_main)
