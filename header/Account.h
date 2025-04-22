@@ -6,11 +6,12 @@
 using std::string;
 
 class Account {
-    private:
+    protected:
         string username;
         string passkey;
     public:
         class AccountBuilder {
+            protected:
                 string _username;
                 string _passkey;
             public:
