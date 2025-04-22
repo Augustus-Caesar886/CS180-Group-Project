@@ -15,4 +15,6 @@ TEST(AccountTests, testAccount) {
     EXPECT_TRUE(user.authenticate("W", "123"));
     EXPECT_FALSE(user.authenticate("V", "123"));
     EXPECT_FALSE(user.authenticate("W", "456"));
+    EXPECT_FALSE(user.authenticate("WW", "123"));
+    EXPECT_FALSE(user.authenticate("W", "1234"));
 }
