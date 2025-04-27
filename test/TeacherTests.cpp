@@ -21,4 +21,6 @@ TEST(TeacherTests, testClassroomManagement) {
     t.createClassroom();
 
     EXPECT_EQ(t.viewClassroomList().size(), 1);
+
+    EXPECT_TRUE(t.authenticate("M", "202cb962ac59075b964b07152d234b70"));
 }
