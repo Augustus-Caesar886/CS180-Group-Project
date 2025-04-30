@@ -15,4 +15,5 @@ ADD_EXECUTABLE(MajorMind
     src/Account.cpp
     src/Teacher.cpp
     src/Student.cpp
+    src/md5.cpp
 )

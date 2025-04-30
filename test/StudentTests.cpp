@@ -11,7 +11,7 @@ using ::testing::InSequence;
 TEST(StudentTests, testStudent) {
     Student w = Student::builder().username("w").passkey("123").classroomCode(456).currentMajor("CSBA").build();
 
-    EXPECT_TRUE(w.authenticate("w", "123"));
+    EXPECT_TRUE(w.authenticate("w", "202cb962ac59075b964b07152d234b70"));
     EXPECT_FALSE(w.authenticate("w", "122"));
     EXPECT_FALSE(w.authenticate("p", "123"));
     
