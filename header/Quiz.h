@@ -13,6 +13,9 @@ using std::ostream;
 struct Answer {
     string text;
     int mechScore, electricalScore, civilScore, csScore, chemScore; //0-5 scores
+    public:
+        Answer() : text(""), mechScore(0), electricalScore(0), civilScore(0), csScore(0), chemScore(0) {}
+        Answer(const string& text, int mech, int elec, int civ, int cs, int chem) : text(text), mechScore(mech), electricalScore(elec), civilScore(civ), csScore(cs), chemScore(chem) {}
 };
 
 class Question {
@@ -44,7 +47,7 @@ class Question {
                     return q;
                 }
         };
-        QuestionBuilder builder()  { return QuestionBuilder(); }
+        static QuestionBuilder builder()  { return QuestionBuilder(); }
         friend class QuestionBuilder;
 };
 
@@ -57,9 +60,11 @@ class Quiz {
         collectionType questionBank;
         using questionNumType = int;
     public:
+        void addQuestion(const Question& q) { questionBank.push_back(q); }
         void displayQuestion(questionNumType, ostream&) const;
         void displayResults(ostream&) const;
         void refresh();
+        //TODO: will need to accept question results
 };
 
 #endif

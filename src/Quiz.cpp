@@ -6,7 +6,7 @@ void Quiz::displayQuestion(Quiz::questionNumType questionNum, ostream& out) cons
     out << questionBank.at(questionNum-1).prompt << endl;
     char answerOption = 'a';
     for(int i = 0;i < Question::possAnswers; ++i) {
-        out << (answerOption++) << ". " << questionBank.at(questionNum-1).answers[i].text << endl;
+        out << "\t" << (answerOption++) << ". " << questionBank.at(questionNum-1).answers[i].text << endl;
     }
 }
 void Quiz::displayResults(ostream& out) const {

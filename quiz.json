@@ -1,956 +1,958 @@
 {
-    "question1": {
-        "prompt": "What activity sounds the most fun to you?",
-        "answer1": {
-            "text": "Designing a robot to play soccer",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 3,
-                "civil": 0,
-                "compsci": 3,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Creating a circuit to power a lightbulb",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 5,
-                "civil": 2,
-                "compsci": 1,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "Drawing a city map with roads and bridges",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Creating a chatbot",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 1,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Making a new cleaning product to remove any stain",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question2": {
-        "prompt": "Your friend wants help with a school project. What would you most enjoy helping them with?",
-        "answer1": {
-            "text": "Building a rocket that actually launches",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 3,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 1
-            }
-        },
-        "answer2": {
-            "text": "Setting up LEDs on a microcontroller",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 1,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "Making a 3D interactive map of a city",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Programming a simple game on a tablet",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 1,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Creating any science experiment with materials",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question3": {
-        "prompt": "Which one of these YouTube videos would you watch first?",
-        "answer1": {
-            "text": "How a car engine actually works",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 2,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 2
-            }
-        },
-        "answer2": {
-            "text": "How a phone charger actually charges your phone",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "How skyscrapers are designed to withstand earthquakes",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "How AI assistants are programmed",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "What happens inside a battery when it dies?",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 2,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question4": {
-        "prompt": "You’re at a science fair. Which booth are you headed to first?",
-        "answer1": {
-            "text": "The one with 3D-printed race cars and slingshots",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "The one showing a Tesla coil sparking to music",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "The one showcasing near indestructible metals",
-            "scores": {
-                "mechanical": 3,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 2
-            }
-        },
-        "answer4": {
-            "text": "The one with VR goggles and motion sensors",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 3,
-                "civil": 1,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "The one colorful reactions in an elaborate test tube set up",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question5": {
-        "prompt": "Which of these school subjects would you enjoy the most?",
-        "answer1": {
-            "text": "Physics",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 3,
-                "civil": 3,
-                "compsci": 0,
-                "chemical": 3
-            }
-        },
-        "answer2": {
-            "text": "Math",
-            "scores": {
-                "mechanical": 4,
-                "electrical": 5,
-                "civil": 4,
-                "compsci": 4,
-                "chemical": 4
-            }
-        },
-        "answer3": {
-            "text": "Geography",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Computer Science",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 1,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Chemistry",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question6": {
-        "prompt": "You’re handed a blank notebook. What do you fill it with?",
-        "answer1": {
-            "text": "Sketches of machines",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 3,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Diagrams of complex and elaborate circuits",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "City layouts",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "RAM Layouts",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 4,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Lewis dot structures",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question7": {
-        "prompt": "What kind of problem do you secretly like solving?",
-        "answer1": {
-            "text": "Figuring out how to make something move or work physically",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 1,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Troubleshooting electronics when something won’t turn on",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 1,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "Creating a large plan that follows through perfectly",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 1,
-                "civil": 5,
-                "compsci": 2,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Solving logical problems and puzzles",
-            "scores": {
-                "mechanical": 3,
-                "electrical": 4,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 4
-            }
-        },
-        "answer5": {
-            "text": "Using theories to explain away a problem",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 2,
-                "chemical": 5
-            }
-        }
-    },
-    "question8": {
-        "prompt": "If you were given $10,000 to build a project, what would you build?",
-        "answer1": {
-            "text": "A working drone",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 4,
-                "civil": 0,
-                "compsci": 3,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "A home energy system powered by solar panels",
-            "scores": {
-                "mechanical": 2,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 3
-            }
-        },
-        "answer3": {
-            "text": "A miniature home for small animals",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "A smart mirror that talks back to you",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "A water filtration system that separates water from any substance",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 0,
-                "civil": 3,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question9": {
-        "prompt": "My favorite kind of puzzle is…",
-        "answer1": {
-            "text": "Mechanical puzzles like Rubik’s cubes",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Building electrical kits",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "Big-picture puzzles with spatial awareness",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Coding challenges",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Reaction-based puzzles like making potions in videogames",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 1,
-                "chemical": 5
-            }
-        }
-    },
-    "question10": {
-        "prompt": "Pick a summer internship",
-        "answer1": {
-            "text": "Helping design a new electric bike",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 4,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Work with a team to increase electrical output of wind turbines",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 5,
-                "civil": 3,
-                "compsci": 0,
-                "chemical": 3
-            }
-        },
-        "answer3": {
-            "text": "An architecture design opportunity building stable bridges",
-            "scores": {
-                "mechanical": 3,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 1
-            }
-        },
-        "answer4": {
-            "text": "Developing a web app for a tech start-up",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Working in lab to test a new skin product",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question11": {
-        "prompt": "Which item would you be most excited to get on your birthday?",
-        "answer1": {
-            "text": "Power tools",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 1,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "A electrical kit",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "A miniature city set",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Microcontroller",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 2,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Home Chemistry Set",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question12": {
-        "prompt": "What excites you most about the future?",
-        "answer1": {
-            "text": "New types of transportation",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 1,
-                "civil": 4,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Smart Grids or Renewable Energy",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 4,
-                "compsci": 0,
-                "chemical": 4
-            }
-        },
-        "answer3": {
-            "text": "Better Infrastructure",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "AI",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "New Materials",
-            "scores": {
-                "mechanical": 3,
-                "electrical": 1,
-                "civil": 2,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question13": {
-        "prompt": "You’re on a desert island with tools. What are you doing next?",
-        "answer1": {
-            "text": "Build traps for food",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Rig up a way to generate power",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 5,
-                "civil": 1,
-                "compsci": 0,
-                "chemical": 1
-            }
-        },
-        "answer3": {
-            "text": "Build a shelter",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Create an SOS signal to call for help",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 3,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Boil seawater to have something to drink",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 2,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question14": {
-        "prompt": "Your group project role usually becomes:",
-        "answer1": {
-            "text": "The one who builds things",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 0,
-                "civil": 2,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "The one who connects things together between peers",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "The one who organizes and makes plans",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 1,
-                "civil": 5,
-                "compsci": 1,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "The one who approaches their task logically",
-            "scores": {
-                "mechanical": 2,
-                "electrical": 2,
-                "civil": 1,
-                "compsci": 5,
-                "chemical": 1
-            }
-        },
-        "answer5": {
-            "text": "The one who researches for the project",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 1,
-                "civil": 2,
-                "compsci": 1,
-                "chemical": 5
-            }
-        }
-    },
-    "question15": {
-        "prompt": "What’s your favorite type of movie scene?",
-        "answer1": {
-            "text": "Action sequences with cool vehicles",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Scenes with complex circuitry and wiring",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "Disaster scenes of falling debris",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Futuristic computers",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 1,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Lab experiments gone wrong",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question16": {
-        "prompt": "Which club would you join at school?",
-        "answer1": {
-            "text": "Robotics club",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 3,
-                "civil": 0,
-                "compsci": 2,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Electronics club",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "Environmental design club",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 2
-            }
-        },
-        "answer4": {
-            "text": "Coding club",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Science Olympiad",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 1,
-                "civil": 0,
-                "compsci": 1,
-                "chemical": 5
-            }
-        }
-    },
-    "question17": {
-        "prompt": "Which job title sounds the most appealing?",
-        "answer1": {
-            "text": "Product Design Engineer",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 2,
-                "civil": 0,
-                "compsci": 2,
-                "chemical": 1
-            }
-        },
-        "answer2": {
-            "text": "Power Systems Engineer",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "Structural Engineer",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Software Engineer",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Process Development Engineer",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    },
-    "question18": {
-        "prompt": "You’re playing Minecraft. What’s your favorite thing to build?",
-        "answer1": {
-            "text": "Redstone-powered mechanisms",
-            "scores": {
-                "mechanical": 5,
-                "electrical": 3,
-                "civil": 0,
-                "compsci": 2,
-                "chemical": 0
-            }
-        },
-        "answer2": {
-            "text": "Complex circuits with minecarts powered by redstone",
-            "scores": {
-                "mechanical": 1,
-                "electrical": 5,
-                "civil": 0,
-                "compsci": 3,
-                "chemical": 0
-            }
-        },
-        "answer3": {
-            "text": "Command block systems",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 5,
-                "chemical": 0
-            }
-        },
-        "answer4": {
-            "text": "Buildings, towns, and/or cities",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 5,
-                "compsci": 0,
-                "chemical": 0
-            }
-        },
-        "answer5": {
-            "text": "Labs, potion brewing stations, and the like",
-            "scores": {
-                "mechanical": 0,
-                "electrical": 0,
-                "civil": 0,
-                "compsci": 0,
-                "chemical": 5
-            }
-        }
-    }
+    "questions": [
+        {"question1": {
+            "prompt": "What activity sounds the most fun to you?",
+            "answer1": {
+                "text": "Designing a robot to play soccer",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 3,
+                    "civil": 0,
+                    "compsci": 3,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Creating a circuit to power a lightbulb",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 5,
+                    "civil": 2,
+                    "compsci": 1,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "Drawing a city map with roads and bridges",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Creating a chatbot",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 1,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Making a new cleaning product to remove any stain",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question2": {
+            "prompt": "Your friend wants help with a school project. What would you most enjoy helping them with?",
+            "answer1": {
+                "text": "Building a rocket that actually launches",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 3,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 1
+                }
+            },
+            "answer2": {
+                "text": "Setting up LEDs on a microcontroller",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 1,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "Making a 3D interactive map of a city",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Programming a simple game on a tablet",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 1,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Creating any science experiment with materials",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question3": {
+            "prompt": "Which one of these YouTube videos would you watch first?",
+            "answer1": {
+                "text": "How a car engine actually works",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 2,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 2
+                }
+            },
+            "answer2": {
+                "text": "How a phone charger actually charges your phone",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "How skyscrapers are designed to withstand earthquakes",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "How AI assistants are programmed",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "What happens inside a battery when it dies?",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 2,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question4": {
+            "prompt": "You’re at a science fair. Which booth are you headed to first?",
+            "answer1": {
+                "text": "The one with 3D-printed race cars and slingshots",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "The one showing a Tesla coil sparking to music",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "The one showcasing near indestructible metals",
+                "scores": {
+                    "mechanical": 3,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 2
+                }
+            },
+            "answer4": {
+                "text": "The one with VR goggles and motion sensors",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 3,
+                    "civil": 1,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "The one colorful reactions in an elaborate test tube set up",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question5": {
+            "prompt": "Which of these school subjects would you enjoy the most?",
+            "answer1": {
+                "text": "Physics",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 3,
+                    "civil": 3,
+                    "compsci": 0,
+                    "chemical": 3
+                }
+            },
+            "answer2": {
+                "text": "Math",
+                "scores": {
+                    "mechanical": 4,
+                    "electrical": 5,
+                    "civil": 4,
+                    "compsci": 4,
+                    "chemical": 4
+                }
+            },
+            "answer3": {
+                "text": "Geography",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Computer Science",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 1,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Chemistry",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question6": {
+            "prompt": "You’re handed a blank notebook. What do you fill it with?",
+            "answer1": {
+                "text": "Sketches of machines",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 3,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Diagrams of complex and elaborate circuits",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "City layouts",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "RAM Layouts",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 4,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Lewis dot structures",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question7": {
+            "prompt": "What kind of problem do you secretly like solving?",
+            "answer1": {
+                "text": "Figuring out how to make something move or work physically",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 1,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Troubleshooting electronics when something won’t turn on",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 1,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "Creating a large plan that follows through perfectly",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 1,
+                    "civil": 5,
+                    "compsci": 2,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Solving logical problems and puzzles",
+                "scores": {
+                    "mechanical": 3,
+                    "electrical": 4,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 4
+                }
+            },
+            "answer5": {
+                "text": "Using theories to explain away a problem",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 2,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question8": {
+            "prompt": "If you were given $10,000 to build a project, what would you build?",
+            "answer1": {
+                "text": "A working drone",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 4,
+                    "civil": 0,
+                    "compsci": 3,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "A home energy system powered by solar panels",
+                "scores": {
+                    "mechanical": 2,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 3
+                }
+            },
+            "answer3": {
+                "text": "A miniature home for small animals",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "A smart mirror that talks back to you",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "A water filtration system that separates water from any substance",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 0,
+                    "civil": 3,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question9": {
+            "prompt": "My favorite kind of puzzle is…",
+            "answer1": {
+                "text": "Mechanical puzzles like Rubik’s cubes",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Building electrical kits",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "Big-picture puzzles with spatial awareness",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Coding challenges",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Reaction-based puzzles like making potions in videogames",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 1,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question10": {
+            "prompt": "Pick a summer internship",
+            "answer1": {
+                "text": "Helping design a new electric bike",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 4,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Work with a team to increase electrical output of wind turbines",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 5,
+                    "civil": 3,
+                    "compsci": 0,
+                    "chemical": 3
+                }
+            },
+            "answer3": {
+                "text": "An architecture design opportunity building stable bridges",
+                "scores": {
+                    "mechanical": 3,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 1
+                }
+            },
+            "answer4": {
+                "text": "Developing a web app for a tech start-up",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Working in lab to test a new skin product",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question11": {
+            "prompt": "Which item would you be most excited to get on your birthday?",
+            "answer1": {
+                "text": "Power tools",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 1,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "A electrical kit",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "A miniature city set",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Microcontroller",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 2,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Home Chemistry Set",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question12": {
+            "prompt": "What excites you most about the future?",
+            "answer1": {
+                "text": "New types of transportation",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 1,
+                    "civil": 4,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Smart Grids or Renewable Energy",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 4,
+                    "compsci": 0,
+                    "chemical": 4
+                }
+            },
+            "answer3": {
+                "text": "Better Infrastructure",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "AI",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "New Materials",
+                "scores": {
+                    "mechanical": 3,
+                    "electrical": 1,
+                    "civil": 2,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question13": {
+            "prompt": "You’re on a desert island with tools. What are you doing next?",
+            "answer1": {
+                "text": "Build traps for food",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Rig up a way to generate power",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 5,
+                    "civil": 1,
+                    "compsci": 0,
+                    "chemical": 1
+                }
+            },
+            "answer3": {
+                "text": "Build a shelter",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Create an SOS signal to call for help",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 3,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Boil seawater to have something to drink",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 2,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question14": {
+            "prompt": "Your group project role usually becomes:",
+            "answer1": {
+                "text": "The one who builds things",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 0,
+                    "civil": 2,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "The one who connects things together between peers",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "The one who organizes and makes plans",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 1,
+                    "civil": 5,
+                    "compsci": 1,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "The one who approaches their task logically",
+                "scores": {
+                    "mechanical": 2,
+                    "electrical": 2,
+                    "civil": 1,
+                    "compsci": 5,
+                    "chemical": 1
+                }
+            },
+            "answer5": {
+                "text": "The one who researches for the project",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 1,
+                    "civil": 2,
+                    "compsci": 1,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question15": {
+            "prompt": "What’s your favorite type of movie scene?",
+            "answer1": {
+                "text": "Action sequences with cool vehicles",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Scenes with complex circuitry and wiring",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "Disaster scenes of falling debris",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Futuristic computers",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 1,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Lab experiments gone wrong",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question16": {
+            "prompt": "Which club would you join at school?",
+            "answer1": {
+                "text": "Robotics club",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 3,
+                    "civil": 0,
+                    "compsci": 2,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Electronics club",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "Environmental design club",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 2
+                }
+            },
+            "answer4": {
+                "text": "Coding club",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Science Olympiad",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 1,
+                    "civil": 0,
+                    "compsci": 1,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question17": {
+            "prompt": "Which job title sounds the most appealing?",
+            "answer1": {
+                "text": "Product Design Engineer",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 2,
+                    "civil": 0,
+                    "compsci": 2,
+                    "chemical": 1
+                }
+            },
+            "answer2": {
+                "text": "Power Systems Engineer",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "Structural Engineer",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Software Engineer",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Process Development Engineer",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }},
+        {"question18": {
+            "prompt": "You’re playing Minecraft. What’s your favorite thing to build?",
+            "answer1": {
+                "text": "Redstone-powered mechanisms",
+                "scores": {
+                    "mechanical": 5,
+                    "electrical": 3,
+                    "civil": 0,
+                    "compsci": 2,
+                    "chemical": 0
+                }
+            },
+            "answer2": {
+                "text": "Complex circuits with minecarts powered by redstone",
+                "scores": {
+                    "mechanical": 1,
+                    "electrical": 5,
+                    "civil": 0,
+                    "compsci": 3,
+                    "chemical": 0
+                }
+            },
+            "answer3": {
+                "text": "Command block systems",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 5,
+                    "chemical": 0
+                }
+            },
+            "answer4": {
+                "text": "Buildings, towns, and/or cities",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 5,
+                    "compsci": 0,
+                    "chemical": 0
+                }
+            },
+            "answer5": {
+                "text": "Labs, potion brewing stations, and the like",
+                "scores": {
+                    "mechanical": 0,
+                    "electrical": 0,
+                    "civil": 0,
+                    "compsci": 0,
+                    "chemical": 5
+                }
+            }
+        }}
+    ]
 }
