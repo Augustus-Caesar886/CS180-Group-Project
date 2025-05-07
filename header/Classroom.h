@@ -11,7 +11,6 @@
 using std::string;
 using std::vector;
 
-//PLACEHOLDER
 class Classroom {
     private:
         int classCode;
