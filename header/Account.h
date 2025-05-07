@@ -22,8 +22,13 @@ class Account {
         };
         friend class AccountBuilder;
         static AccountBuilder builder() { return AccountBuilder(); }
-        string computeHash(const string& passkey) const;            // Hashes passwords when creating an account
-        bool authenticate(const string& username, const string& passkey) const { return (username == this->username) && (computeHash(passkey) == computeHash(this->passkey)); }
+        bool authenticate(const string& username1, const string& passkey1) const { return (username1 == this->username) && (computeHash(passkey1) == this->passkey); }
+        string computeHash(const string& passkey) const;          // Hashes passwords when creating an account
+
+        // TESTING ACCOUNT STORAGE: Getters
+
+        string getUsername() const { return this->username; }
+        string getPasskey() const { return this->passkey; }
 };
 
 #endif

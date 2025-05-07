@@ -1,4 +1,3 @@
-
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 PROJECT(MajorMind)
@@ -20,4 +19,5 @@ ADD_EXECUTABLE(MajorMind
     src/json.cpp
     src/JSONQuizReader.cpp
     src/md5.cpp
+    src/AccountStorage.cpp
 )
