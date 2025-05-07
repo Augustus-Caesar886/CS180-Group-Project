@@ -10,6 +10,8 @@ class Student : public Account {
         int classroomCode;
         string currentMajor;
     public:
+        string getUsername() const { return username; }
+        string getPasskey() const { return passkey; }
         int getClassroomCode() const { return classroomCode; }
         string getCurrentMajor() const { return currentMajor; }
         class StudentBuilder : public AccountBuilder {
@@ -28,5 +30,15 @@ class Student : public Account {
 //classroom code: int
 //currentMajor: string
 };
+
+inline bool operator==(const Student& lhs, const Student& rhs) {
+    return lhs.getUsername() == rhs.getUsername() &&
+           lhs.getPasskey() == rhs.getPasskey() &&
+           lhs.getClassroomCode() == rhs.getClassroomCode();
+}
+
+inline bool operator<(const Student& lhs, const Student& rhs) {
+    return lhs.getUsername() < rhs.getUsername();
+}
 
 #endif
