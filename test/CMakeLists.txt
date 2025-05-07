@@ -13,6 +13,8 @@ ADD_EXECUTABLE(MajorMindTests
     TeacherTests.cpp
     ../src/Student.cpp
     StudentTests.cpp
+    ../src/Classroom.cpp
+    ClassroomTests.cpp
 )
 
 target_link_libraries(MajorMindTests gmock gtest gtest_main)
