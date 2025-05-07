@@ -1,3 +1,4 @@
+
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
@@ -18,6 +19,7 @@ ADD_EXECUTABLE(MajorMindTests
     ../src/json.cpp
     JSONQuizReaderTests.cpp
     ../src/JSONQuizReader.cpp
+    ../src/md5.cpp
 )
 
 target_link_libraries(MajorMindTests gmock gtest gtest_main)

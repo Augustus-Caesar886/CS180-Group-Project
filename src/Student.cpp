@@ -1,4 +1,5 @@
 #include "../header/Student.h"
+#include "../header/md5.h"
 
 Student::StudentBuilder &Student::StudentBuilder::username(const string& username) {
     AccountBuilder::username(username);
@@ -19,7 +20,7 @@ Student::StudentBuilder &Student::StudentBuilder::currentMajor(const string& maj
 Student Student::StudentBuilder::build() const {
     Student s;
     s.username = _username;
-    s.passkey = _passkey;
+    s.passkey = s.computeHash(_passkey);
     s.classroomCode = _classroomCode;
     s.currentMajor = _currentMajor;
     return s;

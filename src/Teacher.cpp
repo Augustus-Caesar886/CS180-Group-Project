@@ -7,7 +7,7 @@ using std::string;
 Teacher Teacher::TeacherBuilder::build() const {
     Teacher t;
     t.username = _username;
-    t.passkey = _passkey;
+    t.passkey = t.computeHash(_passkey);
     return t;
 }
 
