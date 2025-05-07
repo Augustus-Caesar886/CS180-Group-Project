@@ -55,5 +55,8 @@ TEST(QuizTests, testQuiz) {
             string("\td. Programming a simple game on a tablet") + string("\n") +
             string("\te. Creating any science experiment with materials") + string("\n")
         )
-    );
+    ); 
+    //TODO: Update quiz tests when output posts scores
 }
+
+//TODO: Test quiz refresh 
