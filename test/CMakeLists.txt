@@ -13,6 +13,8 @@ ADD_EXECUTABLE(MajorMindTests
     TeacherTests.cpp
     ../src/Student.cpp
     StudentTests.cpp
+    ../src/Classroom.cpp
+    ClassroomTests.cpp
     ../src/Quiz.cpp
     QuizTests.cpp
     ../src/json.cpp
