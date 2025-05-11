@@ -1,29 +1,81 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'; // allows changing pages
 
-function QuizResultsPage() { // functional component
-    const location = useLocation(); // returns location object of current page of app, used to access state passed from previous page
-    const navigate = useNavigate(); // used to go to different pages
+function QuizResultsPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    const username = location.state?.username || 'Student'; // access username from location state
-    const answers = location.state?.answers || [];
-    const major = location.state?.major;
+  const username = location.state?.username || 'Student'; // tries to get username from location state and defaults to student
 
-    const handleGoBack = () => {
-        navigate('/student', { state: { username }})
-    };
-    return (
-        <div style={{ padding: '2rem' }}>
-          <h2>Quiz Results</h2>
+  // Make answers and major stateful so we can set them in useEffect
+  const [answers, setAnswers] = useState(location.state?.answers || []); // tries to get quiz answers from previous page's state
+  const [major, setMajor] = useState(location.state?.major || null); // gets recommended major from state
+
+  useEffect(() => {
+    if ((!answers || answers.length === 0) && username) { // if there are answers saves, so if the quiz has been taken
+      const storedAnswers = localStorage.getItem(`quizAnswers`); // get saved answers from localStorage
+      if (storedAnswers) { // if there is data
+        const parsedAnswers = JSON.parse(storedAnswers); // parse from json string to javascript array
+        setAnswers(parsedAnswers); // update state with answers
+        setMajor(determineMajor(parsedAnswers)); // determine major
+      }
+    }
+  }, []);
+
+  // basic example logic, replace with your real logic later
+  function determineMajor(answers) {
+    const score = answers.reduce((acc, answer) => {
+      if (['Math', 'Physics'].includes(answer)) return acc + 1;
+      return acc;
+    }, 0);
+
+    if (score >= 2) {
+      return {
+        name: "Computer Engineering",
+        description:
+          "You enjoy logical thinking, math, and hardware/software systems.",
+        careers: [
+          "Software Developer",
+          "Embedded Systems Engineer",
+          "Hardware Engineer",
+        ],
+      };
+    } else {
+      return {
+        name: "Mechanical Engineering",
+        description:
+          "You enjoy building things and understanding mechanics.",
+        careers: [
+          "Mechanical Engineer",
+          "Product Designer",
+          "Automotive Engineer",
+        ],
+      };
+    }
+  }
+
+  const handleGoBack = () => {
+    navigate('/student', { state: { username } }); // sends user back to student menu
+  };
+
+  return (
+    <div style={{ padding: '2rem' }}>
+      <h2>Quiz Results</h2>
+
+      {!answers || answers.length === 0 ? (
+        <p>You haven't taken the quiz yet.</p>
+      ) : (
+        <>
           <p>Thanks for completing the quiz, {username}!</p>
-    
           <h3>Your Answers:</h3>
           <ul>
             {answers.map((answer, index) => (
-              <li key={index}>Question {index + 1}: {answer || 'No answer given'}</li>
+              <li key={index}>
+                Question {index + 1}: {answer || 'No answer given'}
+              </li>
             ))}
           </ul>
-    
+
           {major && (
             <div>
               <h3>Recommended Major: {major.name}</h3>
@@ -36,11 +88,13 @@ function QuizResultsPage() { // functional component
               </ul>
             </div>
           )}
-    
+
           <br />
           <button onClick={handleGoBack}>Back to Menu</button>
-        </div>
-      );
-    }
-    
-    export default QuizResultsPage;
+        </>
+      )}
+    </div>
+  );
+}
+
+export default QuizResultsPage;
