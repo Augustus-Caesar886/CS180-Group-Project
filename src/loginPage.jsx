@@ -1,69 +1,120 @@
-import React, { useState } from 'react'; // bring in react library and the useState function to manage component states (variables that change)
-import { useNavigate } from 'react-router-dom'; // allows changing pages
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function LoginPage() { // react component which is a function that returns jsx (html code)
+function LoginPage() {
   const [role, setRole] = useState('student');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [classroomCode, setClassroomCode] = useState('');
-  const navigate = useNavigate(); // lets you change page from code
+  const [studentCode, setStudentCode] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogin = () => { // function for when user clicks log in button
-    if (!username || !password) {
-      alert('Please enter a username and password.');
-      return;
-    }
+  const handleRoleChange = (e) => setRole(e.target.value);
 
-    if (role === 'student') {
-      if (classroomCode === 'ABC123') {
-        navigate('/student', { state: { username } });
-      } else {
-        alert('Invalid classroom code!');
+  const handleSubmit = () => {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    if (isRegistering) {
+      if (!username || !password || (role === 'student' && !studentCode)) {
+        alert('Please fill in all required fields.');
+        return;
       }
+
+      // 1️⃣ Save user
+      users.push({ username, password, role, studentCode });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      // 2️⃣ If student, add to classroom
+      if (role === 'student') {
+        const classrooms = JSON.parse(localStorage.getItem('classrooms')) || [];
+        const classroom = classrooms.find(c => c.code === studentCode);
+        if (classroom) {
+          classroom.students.push({ username, major: null });
+          localStorage.setItem('classrooms', JSON.stringify(classrooms));
+        } else {
+          alert('Warning: classroom code not found.');
+        }
+      }
+
+      alert(`${role.charAt(0).toUpperCase() + role.slice(1)} registered!`);
+      navigate(`/${role}`, { state: { username } });
+
     } else {
-      navigate('/teacher', { state: { username } });
+      // Login
+      const user = users.find(u =>
+        u.username === username &&
+        u.password === password &&
+        u.role === role
+      );
+      if (user) {
+        navigate(`/${role}`, { state: { username } });
+      } else {
+        alert('Invalid credentials!');
+      }
     }
   };
 
   return (
     <div style={{ padding: '2rem' }}>
-      <h2>Login</h2>
+      <h2>{isRegistering ? `Register as ${role}` : 'Login'}</h2>
 
-      <label>
-        Role:
-        <select value={role} onChange={e => setRole(e.target.value)}>
-          <option value="student">Student</option>
-          <option value="teacher">Teacher</option>
-        </select>
-      </label>
+      <div>
+        <label>
+          <input
+            type="radio" name="role" value="student"
+            checked={role === 'student'}
+            onChange={handleRoleChange}
+          /> Student
+        </label>
+        <label style={{ marginLeft: '1rem' }}>
+          <input
+            type="radio" name="role" value="teacher"
+            checked={role === 'teacher'}
+            onChange={handleRoleChange}
+          /> Teacher
+        </label>
+      </div>
 
-      <br /><br />
-
-      <label>
-        Username:
-        <input value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-
-      <br /><br />
-
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-
-      <br /><br />
-
-      {role === 'student' && (
-        <>
-          <label>
-            Classroom Code:
-            <input value={classroomCode} onChange={e => setClassroomCode(e.target.value)} />
+      <div style={{ marginTop: '1rem' }}>
+        <div>
+          <label>Username:
+            <input
+              type="text" value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
           </label>
-          <br /><br />
-        </>
-      )}
+        </div>
+        <div>
+          <label>Password:
+            <input
+              type="password" value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </label>
+        </div>
+        {role === 'student' && isRegistering && (
+          <div>
+            <label>Student Code:
+              <input
+                type="text" value={studentCode}
+                onChange={e => setStudentCode(e.target.value)}
+              />
+            </label>
+          </div>
+        )}
+      </div>
 
-      <button onClick={handleLogin}>Log In</button>
+      <div style={{ marginTop: '1rem' }}>
+        <button onClick={handleSubmit}>
+          {isRegistering ? 'Register' : 'Log In'}
+        </button>
+        <button
+          style={{ marginLeft: '1rem' }}
+          onClick={() => setIsRegistering(!isRegistering)}
+        >
+          {isRegistering ? 'Already have an account?' : 'Need an account?'}
+        </button>
+      </div>
     </div>
   );
 }

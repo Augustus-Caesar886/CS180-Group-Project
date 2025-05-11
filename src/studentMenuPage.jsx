@@ -5,13 +5,14 @@ function StudentMenuPage() { // functional component
   const location = useLocation(); // gets data from previous page (current location object)
   const navigate = useNavigate(); // allows navigating to another page
   const username = location.state?.username || 'Student'; // grabs username form location's state object
+  const savedAnswers = JSON.parse(localStorage.getItem('quizAnswers'));
 
   const handleTakeQuiz = () => {
     navigate('/quiz', { state: { username } });
   };
 
   const handleViewResults = () => {
-    alert('Feature to view results coming soon!');
+    navigate('/result', { state: { username } });
   };
 
   const handleLogout = () => {
@@ -23,7 +24,11 @@ function StudentMenuPage() { // functional component
       <h2>Welcome, {username} (Student)</h2>
       <button onClick={handleTakeQuiz}>Take Quiz</button>
       <br /><br />
-      <button onClick={handleViewResults}>View Results</button>
+      {savedAnswers ? (
+        <button onClick={handleViewResults}>View Results</button>
+      ) : (
+        <p>You haven't taken the quiz yet</p>
+      )}
       <br /><br />
       <button onClick={handleLogout}>Log Out</button>
     </div>

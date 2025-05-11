@@ -1,92 +1,80 @@
-import { useLocation, useNavigate } from 'react-router-dom'; // allows changing pages
-import React, { useState } from 'react' // core react library and usestate to manage state, like which question user is on
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-function QuizMenuPage() { // functional component
-    const location = useLocation(); // returns location object of current page of app, used to access state passed from previous page
-    const navigate = useNavigate(); // used to go to a different page after quiz is completed, changes current route in app
-    const username = location.state?.username || 'Student'; // access username from location state, fallback value is 'Student'
-// question list
-    const questions = [
-        {
-        question: "Favorite subject?",
-        options: ["Math", "Physics", "Chemistry", "Biology", "Writing", "Arts"],
-        answer: null, // initially null, will store user response
-        },
-        {
-        question: "Do you prefer working alone or in a team?",
-        options: ["Alone", "In a team", "Both"],
-        answer: null
+function QuizMenuPage() {
+  const { username } = useLocation().state || {};
+  const navigate = useNavigate();
+
+  const questions = [
+    { question: "Favorite subject?", options: ["Math", "Physics", "Chemistry", "Biology", "Writing", "Arts"] },
+    { question: "Do you prefer working alone or in a team?", options: ["Alone", "In a team", "Both"] },
+  ];
+  const majorOptions = [
+    { name: "Mechanical Engineering", description: "...", careers: [/*…*/] },
+    { name: "Computer Engineering", description: "...", careers: [/*…*/] },
+  ];
+
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState(
+    JSON.parse(localStorage.getItem('quizAnswers')) || Array(questions.length).fill(null)
+  );
+
+  const handleAnswerChange = (e) => {
+    const newA = [...answers];
+    newA[currentQuestionIndex] = e.target.value;
+    setAnswers(newA);
+    localStorage.setItem('quizAnswers', JSON.stringify(newA));
+  };
+
+  const determineMajor = (ans) => {
+    const score = ans.reduce((acc, a) => acc + (['Math','Physics'].includes(a) ? 1 : 0), 0);
+    return score >= 2 ? majorOptions[1] : majorOptions[0];
+  };
+
+  const handleNext = () => {
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(i => i + 1);
+    } else {
+      const chosenMajor = determineMajor(answers);
+
+      // 1️⃣ Update student major in classroom
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const user = users.find(u => u.username === username);
+      if (user && user.studentCode) {
+        const classes = JSON.parse(localStorage.getItem('classrooms')) || [];
+        const cls = classes.find(c => c.code === user.studentCode);
+        if (cls) {
+          const stu = cls.students.find(s => s.username === username);
+          if (stu) {
+            stu.major = chosenMajor.name;
+            localStorage.setItem('classrooms', JSON.stringify(classes));
+          }
         }
-    ];
-    const majorOptions = [
-        {
-          name: "Mechanical Engineering",
-          description: "Mechanical Engineering focuses on the design and development of machines and mechanical systems.",
-          careers: ["Mechanical Engineer", "Product Designer", "Automotive Engineer"]
-        },
-        {
-          name: "Computer Engineering",
-          description: "Computer Engineering combines computer science and electrical engineering to design and develop computer systems and hardware-software integration.",
-          careers: ["Software Developer", "Embedded Systems Engineer", "Hardware Engineer"]
-        }
-      ];
+      }
 
-    // set up state for tracking quiz state
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // state variable to track which question the user is answering
-    const [answer, setAnswers] = useState(Array(questions.length).fill(null)); // creates state variable answer which is an array, all values are null until user answers
-
-    // function called when user selects answer to update the state of the selected answer in the quiz when the user selects a different one
-    // called when radio button <input type="radio"> is clicked
-    const handleAnswerChange = (event) => {
-        const newAnswers = [...answer]; // makes copy of answer array
-        newAnswers[currentQuestionIndex] = event.target.value; // updates the answer for the current question
-        setAnswers(newAnswers); // sets new answers array into the state so re-renders component to reflect current state
+      // 2️⃣ Navigate to result
+      navigate('/result', {
+        state: { username, answers, major: chosenMajor }
+      });
     }
+  };
 
-    // handles moving to next question or finishing state
-    const handleNextQuestion = () => {
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-        } else {
-            const defaultMajor = majorOptions[0]
-            
-            navigate('/result', {
-                state: {
-                    username,
-                    answers: answer,
-                    major: defaultMajor
-                }
-            });
-        }
-    };
-  const currentQuestion = questions[currentQuestionIndex]; // retrieves question object corresponding to question index
-
+  const q = questions[currentQuestionIndex];
   return (
     <div style={{ padding: '2rem' }}>
-      <h2>Welcome, {username}</h2> {/* display greeting*/}
-      <h3>Engineering Major Quiz</h3> {/* display quiz title */}
-
-      {/* display current question */}
-      <p>{currentQuestion.question}</p>
-
-      {/* loop through options array to display answer choices*/}
-      {currentQuestion.options.map((option, index) => (
-        <div key={index}>
+      <h2>Quiz for {username}</h2>
+      <p>{q.question}</p>
+      {q.options.map((opt,i) => (
+        <div key={i}>
           <input
-            type="radio"
-            id={option}
-            name="answer"
-            value={option}
-            checked={answer[currentQuestionIndex] === option}
+            type="radio" name="ans" value={opt}
+            checked={answers[currentQuestionIndex] === opt}
             onChange={handleAnswerChange}
-          />
-          <label htmlFor={option}>{option}</label> {/* display label for current option */}
+          /> <label>{opt}</label>
         </div>
       ))}
-
-      <br />
-      <button onClick={handleNextQuestion}> {/* move to next question or finish quiz */}
-        {currentQuestionIndex < questions.length - 1 ? "Next Question" : "Finish Quiz"} {/* button text changes depending on question progrssion */}
+      <button onClick={handleNext}>
+        {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish'}
       </button>
     </div>
   );
