@@ -21,7 +21,8 @@ ADD_EXECUTABLE(MajorMindTests
     JSONQuizReaderTests.cpp
     ../src/JSONQuizReader.cpp
     ../src/md5.cpp
-    ../src/AccountStorage.cpp
+    ../src/StudentAccountStorage.cpp
+    ../src/TeacherAccountStorage.cpp
 )
 
 target_link_libraries(MajorMindTests gmock gtest gtest_main)
