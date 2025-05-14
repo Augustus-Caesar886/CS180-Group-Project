@@ -7,5 +7,7 @@ using ::testing::_;
 using ::testing::InSequence;
 
 TEST(CommunicableProcessTests, testProcess) {
-    CommunicableProcess p("", "echo");
+    CommunicableProcess p("/bin/sh", "exec sh");
+    p.send("echo hi");
+    EXPECT_EQ(p.read(), "hi");
 }
