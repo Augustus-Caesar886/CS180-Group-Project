@@ -1,0 +1,14 @@
+[
+    {
+        "classroomCode": 101,
+        "currentMajor": "CS",
+        "passkey": "00c6ee2e21a7548de6260cf72c4f4b5b",
+        "username": "hokey"
+    },
+    {
+        "classroomCode": 102,
+        "currentMajor": "Math",
+        "passkey": "58833651db311ba4bc11cb26b1900b0f",
+        "username": "pokey"
+    },
+]
