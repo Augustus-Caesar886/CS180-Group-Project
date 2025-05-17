@@ -10,8 +10,8 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleRoleChange = (e) => setRole(e.target.value);
-
-  const handleSubmit = () => {
+////////////
+  const handleSubmit = async () => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
     if (isRegistering) {
@@ -41,15 +41,25 @@ function LoginPage() {
 
     } else {
       // Login
-      const user = users.find(u =>
-        u.username === username &&
-        u.password === password &&
-        u.role === role
-      );
-      if (user) {
-        navigate(`/${role}`, { state: { username } });
-      } else {
-        alert('Invalid credentials!');
+        try {
+          const response = await fetch('http://localhost:8080/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password, role }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === 'success') {
+          navigate(`/${role}`, { state: { username } });
+        } else {
+          alert(data.message || 'Login failed');
+        }
+      } catch (error) {
+          console.error('Login error:', error);
+          alert('Could not connect to server');
       }
     }
   };
@@ -120,3 +130,6 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
+
+//just major stored in json
