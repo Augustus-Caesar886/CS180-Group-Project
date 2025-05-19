@@ -10,7 +10,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleRoleChange = (e) => setRole(e.target.value);
-////////////
+
   const handleSubmit = async () => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -20,11 +20,9 @@ function LoginPage() {
         return;
       }
 
-      // 1️⃣ Save user
       users.push({ username, password, role, studentCode });
       localStorage.setItem('users', JSON.stringify(users));
 
-      // 2️⃣ If student, add to classroom
       if (role === 'student') {
         const classrooms = JSON.parse(localStorage.getItem('classrooms')) || [];
         const classroom = classrooms.find(c => c.code === studentCode);
@@ -40,7 +38,6 @@ function LoginPage() {
       navigate(`/${role}`, { state: { username } });
 
     } else {
-      // Login
         try {
           const response = await fetch('http://localhost:8080/login', {
             method: 'POST',

@@ -2,6 +2,8 @@
 #include <nlohmann/json.hpp>
 #include "../header/StudentAccountStorage.h"
 #include "../header/TeacherAccountStorage.h"
+#include "../header/Account.h"
+#include "../header/md5.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -15,7 +17,7 @@ int main() {
         res.set_header("Access-Control-Allow-Origin", "http://localhost:3000");
         res.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
         res.set_header("Access-Control-Allow-Headers", "Content-Type");
-        return Server::HandlerResponse::Unhandled; // Let the request continue
+        return Server::HandlerResponse::Unhandled;
     });
 
     svr.Options(".*", [](const Request &req, Response &res){
@@ -33,15 +35,16 @@ int main() {
             json req_json = json::parse(req.body);
             string username = req_json["username"];
             string password = req_json["password"];
+            string role = req_json.value("role", "student");
 
-            string role = req_json["role"];
+            string hashedInput = md5(password); //hashing password entered to compare w/ one in JSON
 
             if(role == "student"){
                 StudentAccountStorage storage("../jinfo/students.json");
                 vector<Student> students = storage.loadStudents();
 
                 for(const Student& s : students){
-                    if(s.authenticate(username, password)){
+                    if(s.getUsername() == username && s.getPasskey() == hashedInput){
                         json response = {
                             {"status", "success"},
                             {"message", "Login successful"}
@@ -56,7 +59,7 @@ int main() {
                 vector<Teacher> teachers = storage.loadTeachers();
 
                 for(const Teacher& t : teachers){
-                    if (t.authenticate(username, password)){
+                    if (t.getUsername() == username && t.getPasskey() == hashedInput){
                         json response{
                             {"status", "success"},
                             {"message", "Login successful"}
@@ -68,7 +71,7 @@ int main() {
                 }
             }
 
-            //if no match
+            //no match at all
             json error = {
                 {"status", "fail"},
                 {"message", "Invalid credentials"}
