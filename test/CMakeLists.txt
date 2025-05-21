@@ -23,6 +23,8 @@ ADD_EXECUTABLE(MajorMindTests
     ../src/md5.cpp
     ../src/StudentAccountStorage.cpp
     ../src/TeacherAccountStorage.cpp
+    ../src/CommunicableProcess.cpp
+    CommunicableProcessTests.cpp
 )
 
 target_link_libraries(MajorMindTests gmock gtest gtest_main)
