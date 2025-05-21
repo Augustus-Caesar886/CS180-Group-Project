@@ -17,4 +17,10 @@ ADD_EXECUTABLE(MajorMind
     src/Student.cpp
     src/md5.cpp
     src/CommunicableProcess.cpp
+    src/Quiz.cpp
+    src/json.cpp
+    src/JSONQuizReader.cpp
+    src/StudentAccountStorage.cpp
+    src/TeacherAccountStorage.cpp
+    src/Classroom.cpp
 )
