@@ -6,8 +6,9 @@
 using ::testing::_;
 using ::testing::InSequence;
 
+#include <filesystem>
+
 TEST(CommunicableProcessTests, testProcess) {
-    CommunicableProcess p("/bin/sh", "exec sh");
-    p.send("echo hi");
-    EXPECT_EQ(p.read(), "hi");
+    CommunicableProcess python3("/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "python3");
+    EXPECT_EQ(python3.query("FRQLLM.py I enjoy computing"), "Computer Science");
 }

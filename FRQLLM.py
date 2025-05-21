@@ -1,6 +1,7 @@
 from sentence_transformers import SentenceTransformer, util
 import sys
 
+
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 majors = {
@@ -15,10 +16,11 @@ major_names = list(majors.keys())
 descriptions = list(majors.values())
 description_embeddings = model.encode(descriptions, convert_to_tensor=True)
 
-while(True):
-    response = input("What are your hobbies/interests? ")
-    response_embedding = model.encode(response, convert_to_tensor=True)
-    cos_scores = util.cos_sim(response_embedding, description_embeddings)[0]
-    best_match_idx = cos_scores.argmax()
-    predicted_major = major_names[best_match_idx]
-    print("Predicted major: ", predicted_major)
+response = ' '.join(sys.argv[2:])
+response_embedding = model.encode(response, convert_to_tensor=True)
+cos_scores = util.cos_sim(response_embedding, description_embeddings)[0]
+best_match_idx = cos_scores.argmax()
+predicted_major = major_names[best_match_idx]
+
+with open("major.txt", "w") as f:
+    f.write(predicted_major)
