@@ -12,32 +12,35 @@ function LoginPage() {
   const handleRoleChange = (e) => setRole(e.target.value);
 
   const handleSubmit = async () => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-
     if (isRegistering) {
       if (!username || !password || (role === 'student' && !studentCode)) {
         alert('Please fill in all required fields.');
         return;
       }
+      //registering new account
+      try{
+        const response = await fetch('http://localhost:8080/register',{
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({username, password, role, classroomCode: Number(studentCode)}),
+        });
 
-      users.push({ username, password, role, studentCode });
-      localStorage.setItem('users', JSON.stringify(users));
+        const data = await response.json();
 
-      if (role === 'student') {
-        const classrooms = JSON.parse(localStorage.getItem('classrooms')) || [];
-        const classroom = classrooms.find(c => c.code === studentCode);
-        if (classroom) {
-          classroom.students.push({ username, major: null });
-          localStorage.setItem('classrooms', JSON.stringify(classrooms));
-        } else {
-          alert('Warning: classroom code not found.');
+        if(response.ok && data.status === 'success'){
+          alert(`${role.charAt(0).toUpperCase() + role.slice(1)} registered successfully!`);
+          navigate(`/${role}`, {state: {username}});
+        }else{
+          alert(data.message || 'Registration failed');
         }
+      }catch(error){
+        console.error("Registration error:", error);
+        alert("Could not connect to server");
       }
-
-      alert(`${role.charAt(0).toUpperCase() + role.slice(1)} registered!`);
-      navigate(`/${role}`, { state: { username } });
-
-    } else {
+    //Login 
+    }else {
         try {
           const response = await fetch('http://localhost:8080/login', {
             method: 'POST',

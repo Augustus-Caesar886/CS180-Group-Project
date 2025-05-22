@@ -2,7 +2,8 @@
 #include <nlohmann/json.hpp>
 #include "../header/StudentAccountStorage.h"
 #include "../header/TeacherAccountStorage.h"
-#include "../header/Account.h"
+#include "../header/Teacher.h"
+#include "../header/Student.h"
 #include "../header/md5.h"
 
 using json = nlohmann::json;
@@ -87,6 +88,50 @@ int main() {
 
             res.status = 400;
             res.set_content(error.dump(), "application/json");
+        }
+    });
+
+    //registration
+    svr.Post("/register", [&](const Request &req, Response &res){
+        try{
+            json req_json = json::parse(req.body);
+            string username = req_json["username"];
+            string password = req_json["password"];
+            int classroomCode = req_json.value("classroomCode",0);
+            string role = req_json["role"];
+            
+
+            if(role == "student"){
+                Student student = Student::builder()
+                .username(username)
+                .passkey(password)
+                .classroomCode(classroomCode)
+                .currentMajor("") //defaulting to empty
+                .build();
+
+                StudentAccountStorage storage("../jinfo/students.json");
+                vector<Student> students = storage.loadStudents();
+                students.push_back(student);
+                storage.saveStudents(students);
+            }else if(role == "teacher"){
+                Teacher teacher = Teacher::builder()
+                    .username(username)
+                    .passkey(password)
+                    .build();
+
+                TeacherAccountStorage storage("../jinfo/teachers.json");
+                vector<Teacher> teachers = storage.loadTeachers();
+                teachers.push_back(teacher);
+                storage.saveTeachers(teachers);
+            }else{
+                res.status = 400;
+                res.set_content(R"({"status":"error","message":"Invalid role"})", "application/json");
+                return;
+            }
+            res.set_content(R"({"status":"success","message":"Account registered"})", "application/json");
+        } catch(const exception &e){
+            res.status = 500;
+            res.set_content(R"({"status":"error","message":"Registration failed"})", "application/json");
         }
     });
 
