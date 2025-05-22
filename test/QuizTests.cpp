@@ -9,6 +9,8 @@ using ::testing::InSequence;
 #include <sstream>
 using std::ostringstream;
 
+const bool enableFRQTests = true;
+
 TEST(QuestionTests, testQuestion) {
     Question q1 = Question::builder().prompt("What activity sounds the most fun to you?")
         .addAnswer(Answer("Designing a robot to play soccer", 5, 0, 0, 0, 0))
@@ -59,4 +61,39 @@ TEST(QuizTests, testQuiz) {
     //TODO: Update quiz tests when output posts scores
 }
 
-//TODO: Test quiz refresh 
+TEST(QuizTests, testAcceptResponse) {
+    Question q1 = Question::builder().prompt("What activity sounds the most fun to you?")
+        .addAnswer(Answer("Designing a robot to play soccer", 5, 0, 0, 0, 0))
+        .addAnswer(Answer("Creating a circuit to power a lightbulb", 0, 5, 0, 0, 0))
+        .addAnswer(Answer("Drawing a city map with roads and bridges", 0, 0, 5, 0, 0))
+        .addAnswer(Answer("Creating a chatbot", 0, 0, 0, 5, 0))
+        .addAnswer(Answer("Making a new cleaning product to remove any stain", 0, 0, 0, 0, 5))
+    .build();
+
+    Quiz q;
+    q.addQuestion(q1);
+    q.acceptQuestionResponse(1, "a");
+    EXPECT_EQ(q.getRecommendation(), "Mechanical Engineering");
+
+    if(enableFRQTests) {
+        q.addFRQQuestion("What are your hobbies?");
+        q.acceptQuestionResponse(2, "Programming");
+        EXPECT_EQ(q.getRecommendation(), "Computer Science");
+    }
+}
+
+TEST(QuizTests, testRefresh) {
+    Question q1 = Question::builder().prompt("What activity sounds the most fun to you?")
+        .addAnswer(Answer("Designing a robot to play soccer", 5, 0, 0, 0, 0))
+        .addAnswer(Answer("Creating a circuit to power a lightbulb", 0, 5, 0, 0, 0))
+        .addAnswer(Answer("Drawing a city map with roads and bridges", 0, 0, 5, 0, 0))
+        .addAnswer(Answer("Creating a chatbot", 0, 0, 0, 5, 0))
+        .addAnswer(Answer("Making a new cleaning product to remove any stain", 0, 0, 0, 0, 5))
+    .build();
+
+    Quiz q;
+    q.addQuestion(q1);
+    q.acceptQuestionResponse(1, "a");
+    q.refresh();
+    EXPECT_EQ(q.getRecommendation(), "Undeclared");
+}

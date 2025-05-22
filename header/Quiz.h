@@ -59,11 +59,21 @@ class Quiz {
         using collectionType = vector<Question>;
         collectionType questionBank;
         using questionNumType = int;
+        using frqCollectionType = vector<string>;
+        frqCollectionType frqQuestions;
+        int maxMechScore() const;
+        int maxElectricalScore() const;
+        int maxCivilScore() const;
+        int maxCSScore() const;
+        int maxChemScore() const;
     public:
+        string getRecommendation() const;
         void addQuestion(const Question& q) { questionBank.push_back(q); }
+        void addFRQQuestion(const string& frq) { frqQuestions.push_back(frq); }
         void displayQuestion(questionNumType, ostream&) const;
         void displayResults(ostream&) const;
         void refresh();
+        void acceptQuestionResponse(questionNumType, const string&);
         //TODO: will need to accept question results
 };
 
