@@ -7,17 +7,21 @@ using std::string;
 Teacher Teacher::TeacherBuilder::build() const {
     Teacher t;
     t.username = _username;
-    t.passkey = t.computeHash(_passkey);
+    if (_passkey.length() <= 15) {
+        t.passkey = t.computeHash(_passkey);
+    } else {
+        t.passkey = _passkey;
+    }
     return t;
 }
 
 Teacher::TeacherBuilder &Teacher::TeacherBuilder::username(const string& username) {
-    AccountBuilder::username(username);
+    this->_username = username;
     return *this;
 }
 
 Teacher::TeacherBuilder &Teacher::TeacherBuilder::passkey(const string& passkey) {
-    AccountBuilder::passkey(passkey);
+    this->_passkey = passkey;
     return *this;
 }
 

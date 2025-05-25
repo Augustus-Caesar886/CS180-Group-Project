@@ -2,11 +2,11 @@
 #include "../header/md5.h"
 
 Student::StudentBuilder &Student::StudentBuilder::username(const string& username) {
-    AccountBuilder::username(username);
+    this->_username = username;
     return *this;
 }
 Student::StudentBuilder &Student::StudentBuilder::passkey(const string& passkey) {
-    AccountBuilder::passkey(passkey);
+    this->_passkey = passkey;
     return *this;
 }
 Student::StudentBuilder &Student::StudentBuilder::classroomCode(int code) {
@@ -20,7 +20,11 @@ Student::StudentBuilder &Student::StudentBuilder::currentMajor(const string& maj
 Student Student::StudentBuilder::build() const {
     Student s;
     s.username = _username;
-    s.passkey = s.computeHash(_passkey);
+    if (_passkey.length() <= 15) {
+        s.passkey = s.computeHash(_passkey);  // plaintext → hash it
+    } else {
+        s.passkey = _passkey;  // already hashed
+    }
     s.classroomCode = _classroomCode;
     s.currentMajor = _currentMajor;
     return s;
