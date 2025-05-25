@@ -135,6 +135,36 @@ int main() {
         }
     });
 
+    svr.Post("/updateMajor", [](const Request &req, Response &res){
+        try{
+            json req_json = json::parse(req.body);
+            string username = req_json["username"];
+            string updateMajor = req_json["major"];
+
+            StudentAccountStorage storage("../jinfo/students.json");
+            vector<Student> students = storage.loadStudents();
+
+            bool isUserFound = false;
+            for(Student& s : students){
+                if(s.getUsername() == username){
+                    s.setUpdateMajor(updateMajor);
+                    isUserFound = true;
+                    break;
+                }
+            }
+            if(isUserFound){
+                storage.saveStudents(students);
+                res.set_content(R"({"status":"success","message":"Major updated"})", "application/json");
+            }else{
+                res.status = 404;
+                res.set_content(R"({"status":"fail","message":"Student not found"})", "application/json");
+            }
+        }catch(const exception &e){
+            res.status = 500;
+            res.set_content(R"({"status":"error","message":"Invalid data"})", "application/json");
+        }
+    });
+
     svr.listen("0.0.0.0", 8080);
 
     return 0;
