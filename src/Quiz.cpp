@@ -98,7 +98,24 @@ void Quiz::acceptQuestionResponse(questionNumType quizNum, const string& respons
 }
 
 string Quiz::getRecommendation() const {
-
+    double percentages[Question::possAnswers] = {((double)mechScore) / maxMechScore(), 
+                            ((double)electricalScore) / maxElectricalScore(),
+                            ((double)civilScore) / maxCivilScore(),
+                            ((double)csScore) / maxCSScore(),
+                            ((double)chemScore) / maxChemScore()
+    };
+    string majors[Question::possAnswers] = {
+        "Mechanical Engineering",
+        "Electrical Engineering",
+        "Civil Engineering",
+        "Computer Science",
+        "Chemical Engineering",
+    };
+    int bestIndex = 0;
+    for(unsigned i = 0; i < Question::possAnswers; ++i) {
+        if(percentages[i] > percentages[bestIndex]) bestIndex = i;
+    }
+    return majors[bestIndex];
 }
 
 void Quiz::refresh() {
@@ -106,21 +123,61 @@ void Quiz::refresh() {
 }
 
 int Quiz::maxMechScore() const {
-
+    int sum = 0;
+    for(auto it : questionBank) {
+        int candidate = 0;
+        for(unsigned i = 0; i < Question::possAnswers; ++i) {
+            candidate = std::max(candidate, it.answers[i].mechScore);
+        }
+        sum += candidate;
+    }
+    return sum + 5 * frqQuestions.size();
 }
 
 int Quiz::maxElectricalScore() const {
-
+    int sum = 0;
+    for(auto it : questionBank) {
+        int candidate = 0;
+        for(unsigned i = 0; i < Question::possAnswers; ++i) {
+            candidate = std::max(candidate, it.answers[i].electricalScore);
+        }
+        sum += candidate;
+    }
+    return sum + 5 * frqQuestions.size();
 }
 
 int Quiz::maxCivilScore() const {
-
+    int sum = 0;
+    for(auto it : questionBank) {
+        int candidate = 0;
+        for(unsigned i = 0; i < Question::possAnswers; ++i) {
+            candidate = std::max(candidate, it.answers[i].civilScore);
+        }
+        sum += candidate;
+    }
+    return sum + 5 * frqQuestions.size();
 }
 
 int Quiz::maxCSScore() const {
-
+    int sum = 0;
+    for(auto it : questionBank) {
+        int candidate = 0;
+        for(unsigned i = 0; i < Question::possAnswers; ++i) {
+            candidate = std::max(candidate, it.answers[i].csScore);
+        }
+        sum += candidate;
+    }
+    return sum + 5 * frqQuestions.size();
 }
 
 int Quiz::maxChemScore() const {
-
+    int sum = 0;
+    for(auto it : questionBank) {
+        int candidate = 0;
+        for(unsigned i = 0; i < Question::possAnswers; ++i) {
+            candidate = std::max(candidate, it.answers[i].chemScore);
+        }
+        sum += candidate;
+    }
+    return sum + 5 * frqQuestions.size();
 }
