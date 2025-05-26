@@ -4,7 +4,7 @@
 using std::endl;
 
 void Quiz::displayQuestion(Quiz::questionNumType questionNum, ostream& out) const {
-    if(questionNum < questionBank.size()) {
+    if(questionNum <= questionBank.size()) {
         out << questionBank.at(questionNum-1).prompt << endl;
         char answerOption = 'a';
         for(int i = 0;i < Question::possAnswers; ++i) {
@@ -16,7 +16,7 @@ void Quiz::displayQuestion(Quiz::questionNumType questionNum, ostream& out) cons
 }
 
 void Quiz::displayResults(ostream& out) const {
-    out << "Suggested major: " << recommendedMajor << endl;
+    out << "Suggested major: " << getRecommendation() << endl;
     out << "Scores:" << endl;
     out << "\tMechanical Engineering: " << mechScore << "/" << maxMechScore() << endl; //TODO: Out of max possible points
     out << "\tElectrical Engineering: " << electricalScore << "/" << maxElectricalScore() << endl;
@@ -28,46 +28,47 @@ void Quiz::displayResults(ostream& out) const {
 void Quiz::acceptQuestionResponse(questionNumType quizNum, const string& response) {
     if(quizNum < questionBank.size()) {
         char responseOption = response[0];
+        Answer* ans = nullptr;
         switch(responseOption) {
             case 'a':
-                const Answer& ans = questionBank.at(responseOption - '0').answers.at(0);
-                mechScore += ans.mechScore;
-                electricalScore += ans.electricalScore;
-                civilScore += ans.civilScore;
-                csScore += ans.csScore;
-                chemScore += ans.chemScore;
+                ans = &questionBank.at(responseOption - '0').answers.at(0);
+                mechScore += ans->mechScore;
+                electricalScore += ans->electricalScore;
+                civilScore += ans->civilScore;
+                csScore += ans->csScore;
+                chemScore += ans->chemScore;
                 break;
             case 'b':
-                const Answer& ans = questionBank.at(responseOption - '0').answers.at(1);
-                mechScore += ans.mechScore;
-                electricalScore += ans.electricalScore;
-                civilScore += ans.civilScore;
-                csScore += ans.csScore;
-                chemScore += ans.chemScore;
+                ans = &questionBank.at(responseOption - '0').answers.at(1);
+                mechScore += ans->mechScore;
+                electricalScore += ans->electricalScore;
+                civilScore += ans->civilScore;
+                csScore += ans->csScore;
+                chemScore += ans->chemScore;
                 break;
             case 'c':
-                const Answer& ans = questionBank.at(responseOption - '0').answers.at(2);
-                mechScore += ans.mechScore;
-                electricalScore += ans.electricalScore;
-                civilScore += ans.civilScore;
-                csScore += ans.csScore;
-                chemScore += ans.chemScore;
+                ans = &questionBank.at(responseOption - '0').answers.at(2);
+                mechScore += ans->mechScore;
+                electricalScore += ans->electricalScore;
+                civilScore += ans->civilScore;
+                csScore += ans->csScore;
+                chemScore += ans->chemScore;
                 break;
             case 'd':
-                const Answer& ans = questionBank.at(responseOption - '0').answers.at(3);
-                mechScore += ans.mechScore;
-                electricalScore += ans.electricalScore;
-                civilScore += ans.civilScore;
-                csScore += ans.csScore;
-                chemScore += ans.chemScore;
+                ans = &questionBank.at(responseOption - '0').answers.at(3);
+                mechScore += ans->mechScore;
+                electricalScore += ans->electricalScore;
+                civilScore += ans->civilScore;
+                csScore += ans->csScore;
+                chemScore += ans->chemScore;
                 break;
             case 'e':
-                const Answer& ans = questionBank.at(responseOption - '0').answers.at(4);
-                mechScore += ans.mechScore;
-                electricalScore += ans.electricalScore;
-                civilScore += ans.civilScore;
-                csScore += ans.csScore;
-                chemScore += ans.chemScore;
+                ans = &questionBank.at(responseOption - '0').answers.at(4);
+                mechScore += ans->mechScore;
+                electricalScore += ans->electricalScore;
+                civilScore += ans->civilScore;
+                csScore += ans->csScore;
+                chemScore += ans->chemScore;
                 break;
             default:
 
@@ -98,6 +99,9 @@ void Quiz::acceptQuestionResponse(questionNumType quizNum, const string& respons
 }
 
 string Quiz::getRecommendation() const {
+    for(unsigned i = 0; i < Question::possAnswers; ++i) { //Check if all max scores are 0
+        
+    }
     double percentages[Question::possAnswers] = {((double)mechScore) / maxMechScore(), 
                             ((double)electricalScore) / maxElectricalScore(),
                             ((double)civilScore) / maxCivilScore(),
