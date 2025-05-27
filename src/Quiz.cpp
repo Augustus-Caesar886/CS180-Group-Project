@@ -26,54 +26,34 @@ void Quiz::displayResults(ostream& out) const {
 }
 
 void Quiz::acceptQuestionResponse(questionNumType quizNum, const string& response) {
-    if(quizNum < questionBank.size()) {
+    if(quizNum <= questionBank.size()) {
         char responseOption = response[0];
         Answer* ans = nullptr;
-        switch(responseOption) {
+        switch(responseOption) { //Get the Answer
             case 'a':
-                ans = &questionBank.at(responseOption - '0').answers.at(0);
-                mechScore += ans->mechScore;
-                electricalScore += ans->electricalScore;
-                civilScore += ans->civilScore;
-                csScore += ans->csScore;
-                chemScore += ans->chemScore;
+                ans = &questionBank.at(quizNum-1).answers.at(0);
                 break;
             case 'b':
-                ans = &questionBank.at(responseOption - '0').answers.at(1);
-                mechScore += ans->mechScore;
-                electricalScore += ans->electricalScore;
-                civilScore += ans->civilScore;
-                csScore += ans->csScore;
-                chemScore += ans->chemScore;
+                ans = &questionBank.at(quizNum-1).answers.at(1);
                 break;
             case 'c':
-                ans = &questionBank.at(responseOption - '0').answers.at(2);
-                mechScore += ans->mechScore;
-                electricalScore += ans->electricalScore;
-                civilScore += ans->civilScore;
-                csScore += ans->csScore;
-                chemScore += ans->chemScore;
+                ans = &questionBank.at(quizNum-1).answers.at(2);
                 break;
             case 'd':
-                ans = &questionBank.at(responseOption - '0').answers.at(3);
-                mechScore += ans->mechScore;
-                electricalScore += ans->electricalScore;
-                civilScore += ans->civilScore;
-                csScore += ans->csScore;
-                chemScore += ans->chemScore;
+                ans = &questionBank.at(quizNum-1).answers.at(3);
                 break;
             case 'e':
-                ans = &questionBank.at(responseOption - '0').answers.at(4);
-                mechScore += ans->mechScore;
-                electricalScore += ans->electricalScore;
-                civilScore += ans->civilScore;
-                csScore += ans->csScore;
-                chemScore += ans->chemScore;
+                ans = &questionBank.at(quizNum-1).answers.at(4);
                 break;
             default:
 
                 break;
-        }
+        } //Update scores
+        mechScore += ans->mechScore;
+        electricalScore += ans->electricalScore;
+        civilScore += ans->civilScore;
+        csScore += ans->csScore;
+        chemScore += ans->chemScore;
     } else { //FRQ
         string pythonLocation = "";
         #ifdef __APPLE__ && __MACH__
@@ -81,7 +61,7 @@ void Quiz::acceptQuestionResponse(questionNumType quizNum, const string& respons
         #elif __linux__
             pythonLocation = "/usr/bin/python3";
         #endif
-        CommunicableProcess python3(pythonLocation, "python3");
+        CommunicableProcess python3(pythonLocation, "python3.12");
 
         string result = python3.query("FRQLLM.py " + response);
         if(result == "Mechanical Engineering") {
@@ -98,16 +78,26 @@ void Quiz::acceptQuestionResponse(questionNumType quizNum, const string& respons
     }
 }
 
+double Quiz::getPercentage(double input1, double input2) const {
+    if(input2 == 0) return 0;
+    return input1 / input2;
+}
+
 string Quiz::getRecommendation() const {
-    for(unsigned i = 0; i < Question::possAnswers; ++i) { //Check if all max scores are 0
-        
-    }
-    double percentages[Question::possAnswers] = {((double)mechScore) / maxMechScore(), 
-                            ((double)electricalScore) / maxElectricalScore(),
-                            ((double)civilScore) / maxCivilScore(),
-                            ((double)csScore) / maxCSScore(),
-                            ((double)chemScore) / maxChemScore()
+    double percentages[Question::possAnswers] = { getPercentage(mechScore, maxMechScore()), 
+                            getPercentage(electricalScore, maxElectricalScore()),
+                            getPercentage(civilScore, maxCivilScore()),
+                            getPercentage(csScore, maxCSScore()),
+                            getPercentage(chemScore, maxChemScore())
     };
+    bool allZero = true;
+    for(unsigned i = 0; i < Question::possAnswers; ++i) { //Check if all max scores are 0
+        if(percentages[i] != 0) {
+            allZero = false;
+            break;
+        }
+    }
+    if(allZero) return "Undeclared";
     string majors[Question::possAnswers] = {
         "Mechanical Engineering",
         "Electrical Engineering",
@@ -126,62 +116,44 @@ void Quiz::refresh() {
     mechScore = electricalScore = civilScore = csScore = chemScore = 0;
 }
 
-int Quiz::maxMechScore() const {
+int Quiz::maxScore(int (*getScore)(const Answer& a)) const {
     int sum = 0;
     for(auto it : questionBank) {
         int candidate = 0;
         for(unsigned i = 0; i < Question::possAnswers; ++i) {
-            candidate = std::max(candidate, it.answers[i].mechScore);
+            candidate = std::max(candidate, getScore(it.answers[i]));
         }
         sum += candidate;
     }
     return sum + 5 * frqQuestions.size();
+}
+
+int Quiz::maxMechScore() const {
+    return maxScore([](const Answer& a){
+        return a.mechScore;
+    });
 }
 
 int Quiz::maxElectricalScore() const {
-    int sum = 0;
-    for(auto it : questionBank) {
-        int candidate = 0;
-        for(unsigned i = 0; i < Question::possAnswers; ++i) {
-            candidate = std::max(candidate, it.answers[i].electricalScore);
-        }
-        sum += candidate;
-    }
-    return sum + 5 * frqQuestions.size();
+    return maxScore([](const Answer& a){
+        return a.electricalScore;
+    });
 }
 
 int Quiz::maxCivilScore() const {
-    int sum = 0;
-    for(auto it : questionBank) {
-        int candidate = 0;
-        for(unsigned i = 0; i < Question::possAnswers; ++i) {
-            candidate = std::max(candidate, it.answers[i].civilScore);
-        }
-        sum += candidate;
-    }
-    return sum + 5 * frqQuestions.size();
+    return maxScore([](const Answer& a){
+        return a.civilScore;
+    });
 }
 
 int Quiz::maxCSScore() const {
-    int sum = 0;
-    for(auto it : questionBank) {
-        int candidate = 0;
-        for(unsigned i = 0; i < Question::possAnswers; ++i) {
-            candidate = std::max(candidate, it.answers[i].csScore);
-        }
-        sum += candidate;
-    }
-    return sum + 5 * frqQuestions.size();
+    return maxScore([](const Answer& a){
+        return a.csScore;
+    });
 }
 
 int Quiz::maxChemScore() const {
-    int sum = 0;
-    for(auto it : questionBank) {
-        int candidate = 0;
-        for(unsigned i = 0; i < Question::possAnswers; ++i) {
-            candidate = std::max(candidate, it.answers[i].chemScore);
-        }
-        sum += candidate;
-    }
-    return sum + 5 * frqQuestions.size();
+    return maxScore([](const Answer& a){
+        return a.chemScore;
+    });
 }

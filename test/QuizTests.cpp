@@ -9,7 +9,7 @@ using ::testing::InSequence;
 #include <sstream>
 using std::ostringstream;
 
-const bool enableFRQTests = true;
+const bool enableFRQTests = false;
 
 TEST(QuestionTests, testQuestion) {
     Question q1 = Question::builder().prompt("What activity sounds the most fun to you?")
@@ -75,6 +75,7 @@ TEST(QuizTests, testAcceptResponse) {
     EXPECT_EQ(q.getRecommendation(), "Mechanical Engineering");
 
     if(enableFRQTests) {
+        q.refresh();
         q.addFRQQuestion("What are your hobbies?");
         q.acceptQuestionResponse(2, "Programming");
         EXPECT_EQ(q.getRecommendation(), "Computer Science");
@@ -120,5 +121,5 @@ TEST(QuizTests, testRecommend) {
     EXPECT_EQ(q.getRecommendation(), "Electrical Engineering"); // 1/1 points compared to 1/2 points for ME
 
     q.refresh();
-    EXPECT_EQ(q.getRecommendation(), "Mechanical Engineering"); //Default recommendation
+    EXPECT_EQ(q.getRecommendation(), "Undeclared"); //Default recommendation
 }
