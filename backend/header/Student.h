@@ -14,6 +14,7 @@ class Student : public Account {
         string getPasskey() const { return passkey; }
         int getClassroomCode() const { return classroomCode; }
         string getCurrentMajor() const { return currentMajor; }
+        void setUpdateMajor(const string& m) {this->currentMajor = m;}
         class StudentBuilder : public AccountBuilder {
             private:
                 int _classroomCode;

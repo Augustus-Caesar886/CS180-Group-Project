@@ -17,7 +17,25 @@ function QuizResultsPage() {
       if (storedAnswers) { // if there is data
         const parsedAnswers = JSON.parse(storedAnswers); // parse from json string to javascript array
         setAnswers(parsedAnswers); // update state with answers
-        setMajor(determineMajor(parsedAnswers)); // determine major
+        const resultMajor = determineMajor(parsedAnswers); // determine major
+        setMajor(resultMajor); //sets the result's (major)
+
+        fetch('http://localhost:8080/updateMajor', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({username, major: resultMajor.name,}),
+        })
+        .then(res => res.json()) //once done fetching, then take apart into JS object 
+        .then(data => {          // then output error if didn't return 'success'
+          if(data.status !== 'success'){
+            console.error('Major update failed:', data.message);
+          }
+        })
+        .catch(e => {
+          console.error('Error updating major:', e);
+        })
       }
     }
   }, []);
