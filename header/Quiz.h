@@ -53,17 +53,29 @@ class Question {
 
 class Quiz {
     private:
-        int mechScore, electricalScore, civilScore, csScore, chemScore;
+        int mechScore = 0, electricalScore = 0, civilScore = 0, csScore = 0, chemScore = 0;
         string recommendedMajor;
         string quizName;
         using collectionType = vector<Question>;
         collectionType questionBank;
         using questionNumType = int;
+        using frqCollectionType = vector<string>;
+        frqCollectionType frqQuestions;
+        int maxMechScore() const;
+        int maxElectricalScore() const;
+        int maxCivilScore() const;
+        int maxCSScore() const;
+        int maxChemScore() const;
+        double getPercentage(double, double) const;
+        int maxScore(int (*)(const Answer&)) const;
     public:
+        string getRecommendation() const;
         void addQuestion(const Question& q) { questionBank.push_back(q); }
+        void addFRQQuestion(const string& frq) { frqQuestions.push_back(frq); }
         void displayQuestion(questionNumType, ostream&) const;
         void displayResults(ostream&) const;
         void refresh();
+        void acceptQuestionResponse(questionNumType, const string&);
         //TODO: will need to accept question results
 };
 

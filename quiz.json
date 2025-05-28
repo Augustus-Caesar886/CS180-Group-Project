@@ -954,5 +954,12 @@
                 }
             }
         }}
+    ],
+    "Free Response Prompts": [
+        "What was your favorite class in high school?",
+        "What are your hobbies?",
+        "Who is your favorite engineer?",
+        "Write a short essay about who you are as a person."
     ]
+
 }

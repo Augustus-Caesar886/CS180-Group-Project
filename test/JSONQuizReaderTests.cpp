@@ -25,9 +25,15 @@ TEST(JSONQuizReaderTests, testReader) {
 
     if(manualApproval) {
         q.displayQuestion(1, cout);    
-        string manualApproval = "";
+        string manualResult = "";
         cout << endl << "Is the above result correct for question 1? (y/n)" << endl;
-        cin >> manualApproval;
-        EXPECT_EQ(manualApproval, "y");
+        cin >> manualResult;
+        EXPECT_EQ(manualResult, "y");
+
+        q.displayQuestion(22, cout);    
+        manualResult = "";
+        cout << endl << "Is the above result correct for question 22? (y/n)" << endl;
+        cin >> manualResult;
+        EXPECT_EQ(manualResult, "y");
     }
 }
