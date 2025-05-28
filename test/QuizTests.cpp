@@ -10,6 +10,7 @@ using ::testing::InSequence;
 using std::ostringstream;
 
 const bool enableFRQTests = false;
+const bool manualTests = false;
 
 TEST(QuestionTests, testQuestion) {
     Question q1 = Question::builder().prompt("What activity sounds the most fun to you?")
@@ -122,6 +123,15 @@ TEST(QuizTests, testRecommend) {
 
     q.refresh();
     EXPECT_EQ(q.getRecommendation(), "Undeclared"); //Default recommendation
+
+    if(manualTests) {
+        q.acceptQuestionResponse(2, "b");
+        q.displayResults(std::cout);
+        string manualApproval = "";
+        std::cout << "Is this display correct (y/n)? ME is 1/2, EE is 1/1, Civil Engineering is 0/2, CS is 0/2, and CE is 0/2" << std::endl;
+        getline(std::cin, manualApproval);
+        EXPECT_EQ(manualApproval, "y");
+    }
 }
 
 TEST(QuizTests, testLongResponse) {
