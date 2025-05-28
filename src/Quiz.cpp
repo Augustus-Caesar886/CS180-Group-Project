@@ -11,7 +11,7 @@ void Quiz::displayQuestion(Quiz::questionNumType questionNum, ostream& out) cons
             out << "\t" << (answerOption++) << ". " << questionBank.at(questionNum-1).answers[i].text << endl;
         }
     } else {
-        out << frqQuestions.at(questionNum - questionBank.size()) << endl;
+        out << frqQuestions.at(questionNum - questionBank.size() - 1) << endl;
     }
 }
 
