@@ -123,3 +123,13 @@ TEST(QuizTests, testRecommend) {
     q.refresh();
     EXPECT_EQ(q.getRecommendation(), "Undeclared"); //Default recommendation
 }
+
+TEST(QuizTests, testLongResponse) {
+    if(enableFRQTests) {
+        string response = "If I had to describe myself in a few words, I’d say I’m curious, driven, and always building something—whether it’s a piece of code, a new skill, or a deeper understanding of the world around me. I’ve always been the kind of person who likes figuring out how things work. That’s what drew me to computer science: the idea that I could use logic and creativity to build things that actually do something. But beyond coding and school, I’m someone who values growth. I’m constantly trying to push myself out of my comfort zone, whether that means leading a team in a group project, teaching myself a new programming language, or even just asking better questions in class. I care a lot about being reliable and honest—if I say I’m going to do something, I’ll do it, and I try to be the kind of person others can count on. I’m also really interested in people. I love learning about different perspectives, especially when it comes to how technology affects our lives. Someday, I hope to use what I learn in computer science to solve problems that matter—whether that’s improving access to education, protecting digital privacy, or creating tools that make everyday life easier. In short, I’m a learner, a builder, and someone who wants to make a meaningful impact. I may not have all the answers yet, but I’m excited to keep exploring until I find them.";
+        Quiz q;
+        q.addFRQQuestion("Write a short essay about who you are as a person.");
+        q.acceptQuestionResponse(1, response);
+        EXPECT_EQ(q.getRecommendation(), "Computer Science");
+    }
+}
