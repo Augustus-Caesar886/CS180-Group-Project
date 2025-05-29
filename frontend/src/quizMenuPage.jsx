@@ -1,81 +1,95 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 function QuizMenuPage() {
   const { username } = useLocation().state || {};
   const navigate = useNavigate();
 
-  const questions = [
-    { question: "Favorite subject?", options: ["Math", "Physics", "Chemistry", "Biology", "Writing", "Arts"] },
-    { question: "Do you prefer working alone or in a team?", options: ["Alone", "In a team", "Both"] },
-  ];
-  const majorOptions = [
-    { name: "Mechanical Engineering", description: "...", careers: [/*…*/] },
-    { name: "Computer Engineering", description: "...", careers: [/*…*/] },
-  ];
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState(
-    JSON.parse(localStorage.getItem('quizAnswers')) || Array(questions.length).fill(null)
-  );
+  const [questionData, setQuestionData] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  
+  useEffect(() => {
+    fetch(`http://localhost:8080/quiz/question/${currentQuestionIndex}`)
+    .then(res => res.json())
+    .then(data => setQuestionData(data))
+    .catch(err => console.error("Error fetching question:", err));
+  }, [currentQuestionIndex]);
 
-  const handleAnswerChange = (e) => {
-    const newA = [...answers];
-    newA[currentQuestionIndex] = e.target.value;
-    setAnswers(newA);
-    localStorage.setItem('quizAnswers', JSON.stringify(newA));
-  };
+  const handleSubmitAnswer = () => {
+    if(!selectedAnswer){return;}
 
-  const determineMajor = (ans) => {
-    const score = ans.reduce((acc, a) => acc + (['Math','Physics'].includes(a) ? 1 : 0), 0);
-    return score >= 2 ? majorOptions[1] : majorOptions[0];
-  };
-
-  const handleNext = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(i => i + 1);
-    } else {
-      const chosenMajor = determineMajor(answers);
-
-      // 1️⃣ Update student major in classroom
-      const users = JSON.parse(localStorage.getItem('users')) || [];
-      const user = users.find(u => u.username === username);
-      if (user && user.studentCode) {
-        const classes = JSON.parse(localStorage.getItem('classrooms')) || [];
-        const cls = classes.find(c => c.code === user.studentCode);
-        if (cls) {
-          const stu = cls.students.find(s => s.username === username);
-          if (stu) {
-            stu.major = chosenMajor.name;
-            localStorage.setItem('classrooms', JSON.stringify(classes));
-          }
-        }
+    fetch('http://localhost:8080/quiz/answer',{
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        questionIndex: currentQuestionIndex,
+        answerChoice: selectedAnswer
+      })
+    })
+    .then(res => {
+      if(!res.ok){throw new Error("Failed to submit answer");}
+      if(currentQuestionIndex < 18){
+        setCurrentQuestionIndex(prev => prev + 1);
+        setSelectedAnswer("");
+      }else{
+        fetch('http://localhost:8080/quiz/recommendation')
+          .then(res => res.json())
+          .then(data => {
+            const major = data.recommendedMajor;
+            navigate('/result', {state: {username, major}});
+          });
       }
-
-      // 2️⃣ Navigate to result
-      navigate('/result', {
-        state: { username, answers, major: chosenMajor }
-      });
-    }
+    })
+    .catch(err =>{
+      console.error("Error submitting answer:", err);
+      alert("There was a problem submitting your answer.");
+    });
   };
 
-  const q = questions[currentQuestionIndex];
   return (
     <div style={{ padding: '2rem' }}>
       <h2>Quiz for {username}</h2>
-      <p>{q.question}</p>
-      {q.options.map((opt,i) => (
-        <div key={i}>
-          <input
-            type="radio" name="ans" value={opt}
-            checked={answers[currentQuestionIndex] === opt}
-            onChange={handleAnswerChange}
-          /> <label>{opt}</label>
-        </div>
-      ))}
-      <button onClick={handleNext}>
-        {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish'}
-      </button>
+
+      {questionData ? (
+        <>
+          <p><strong>Question {currentQuestionIndex + 1}:</strong> {questionData.prompt}</p>
+
+           {questionData.type === "mcq" && questionData.answers.map((opt, i) => {
+            const letter = String.fromCharCode(97 + i);
+            return (
+              <div key={i}>
+                <input
+                  type="radio"
+                  name="ans"
+                  value={letter}
+                  checked={selectedAnswer === letter}
+                  onChange={(e) => setSelectedAnswer(e.target.value)}
+                />
+                <label>{opt}</label>
+              </div>
+            );
+          })}
+
+          {questionData.type === "frq" && (
+            <div>
+              <textarea
+                placeholder="Your response..."
+                value={selectedAnswer}
+                onChange={(e) => setSelectedAnswer(e.target.value)}
+                rows={4}
+                cols={60}
+              />
+            </div>
+          )}
+
+          <button onClick={handleSubmitAnswer} style={{ marginTop: '1rem' }}>
+            {currentQuestionIndex < 18 ? 'Next' : 'Finish'}
+          </button>
+        </>
+      ) : (
+        <p>Loading question...</p>
+      )}
     </div>
   );
 }
