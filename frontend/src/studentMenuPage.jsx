@@ -1,10 +1,10 @@
-import React from 'react'; // impory react library and components
-import { useLocation, useNavigate } from 'react-router-dom'; // allows changing pages
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-function StudentMenuPage() { // functional component
-  const location = useLocation(); // gets data from previous page (current location object)
-  const navigate = useNavigate(); // allows navigating to another page
-  const username = location.state?.username || 'Student'; // grabs username form location's state object
+function StudentMenuPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const username = location.state?.username || 'Student';
   const savedAnswers = JSON.parse(localStorage.getItem('quizAnswers'));
 
   const handleTakeQuiz = () => {
@@ -16,21 +16,90 @@ function StudentMenuPage() { // functional component
   };
 
   const handleLogout = () => {
-    navigate('/'); // sends back to login page
+    navigate('/');
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Welcome, {username} (Student)</h2>
-      <button onClick={handleTakeQuiz}>Take Quiz</button>
-      <br /><br />
+    <div style={{
+      padding: '2rem',
+      backgroundColor: '#eef3ff',
+      borderRadius: '12px',
+      maxWidth: '600px',
+      margin: '2rem auto',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      fontFamily: 'Arial, sans-serif',
+      textAlign: 'center',
+      color: '#333'
+    }}>
+      <h2 style={{ color: '#2b3a67', fontSize: '1.8rem', marginBottom: '1.5rem' }}>
+        Welcome, {username} <span style={{ fontWeight: 'normal' }}>(Student)</span>
+      </h2>
+
+      <button
+        onClick={handleTakeQuiz}
+        style={{
+          padding: '0.6rem 1.2rem',
+          fontSize: '1rem',
+          marginBottom: '1rem',
+          backgroundColor: '#4e63ea',
+          color: 'white',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          transition: 'background-color 0.2s ease'
+        }}
+        onMouseOver={e => e.target.style.backgroundColor = '#3a4dc4'}
+        onMouseOut={e => e.target.style.backgroundColor = '#4e63ea'}
+      >
+        Take Quiz
+      </button>
+
+      <br />
+
       {savedAnswers ? (
-        <button onClick={handleViewResults}>View Results</button>
+        <button
+          onClick={handleViewResults}
+          style={{
+            padding: '0.6rem 1.2rem',
+            fontSize: '1rem',
+            marginTop: '0.5rem',
+            backgroundColor: '#00b894',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            transition: 'background-color 0.2s ease'
+          }}
+          onMouseOver={e => e.target.style.backgroundColor = '#019875'}
+          onMouseOut={e => e.target.style.backgroundColor = '#00b894'}
+        >
+          View Results
+        </button>
       ) : (
-        <p>You haven't taken the quiz yet</p>
+        <p style={{ marginTop: '1rem', color: '#666' }}>
+          You haven't taken the quiz yet.
+        </p>
       )}
+
       <br /><br />
-      <button onClick={handleLogout}>Log Out</button>
+
+      <button
+        onClick={handleLogout}
+        style={{
+          padding: '0.5rem 1.1rem',
+          fontSize: '0.95rem',
+          backgroundColor: '#d63031',
+          color: 'white',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          transition: 'background-color 0.2s ease'
+        }}
+        onMouseOver={e => e.target.style.backgroundColor = '#b02121'}
+        onMouseOut={e => e.target.style.backgroundColor = '#d63031'}
+      >
+        Log Out
+      </button>
     </div>
   );
 }

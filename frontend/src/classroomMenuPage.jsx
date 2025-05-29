@@ -11,35 +11,76 @@ function ClassroomMenuPage({ match }) {
     setClassroom(cls);
   }, [classroomCode]);
 
-  if (!classroom) return <div>Loading or classroom not found.</div>;
+  if (!classroom)
+    return (
+      <div style={{ padding: '2rem', color: '#b00', fontFamily: 'Arial, sans-serif' }}>
+        Loading or classroom not found.
+      </div>
+    );
 
-  const sortedByName = [...classroom.students].sort((a,b) =>
+  const sortedByName = [...classroom.students].sort((a, b) =>
     a.username.localeCompare(b.username)
   );
-  const byMajor = classroom.students.reduce((acc,s) => {
-    (acc[s.major] = acc[s.major]||[]).push(s);
+
+  const byMajor = classroom.students.reduce((acc, s) => {
+    (acc[s.major] = acc[s.major] || []).push(s);
     return acc;
   }, {});
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>{classroom.name} ({classroom.code})</h2>
-      <button onClick={()=>setSortOption('alphabetically')}>Sort A–Z</button>
-      <button onClick={()=>setSortOption('byMajor')}>Group by Major</button>
+    <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', color: '#333' }}>
+      <h2 style={{ color: '#003366' }}>
+        {classroom.name} ({classroom.code})
+      </h2>
+
+      <div style={{ marginBottom: '1rem' }}>
+        <button
+          onClick={() => setSortOption('alphabetically')}
+          style={{
+            marginRight: '0.5rem',
+            padding: '0.5rem 1rem',
+            backgroundColor: sortOption === 'alphabetically' ? '#003366' : '#ccc',
+            color: sortOption === 'alphabetically' ? '#fff' : '#000',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          Sort A–Z
+        </button>
+
+        <button
+          onClick={() => setSortOption('byMajor')}
+          style={{
+            padding: '0.5rem 1rem',
+            backgroundColor: sortOption === 'byMajor' ? '#003366' : '#ccc',
+            color: sortOption === 'byMajor' ? '#fff' : '#000',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          Group by Major
+        </button>
+      </div>
 
       {sortOption === 'alphabetically' ? (
         <ul>
-          {sortedByName.map((s,i) => (
-            <li key={i}>{s.username} {s.major && `(${s.major})`}</li>
+          {sortedByName.map((s) => (
+            <li key={s.username} style={{ marginBottom: '0.25rem' }}>
+              {s.username} {s.major && <span style={{ color: '#666' }}>({s.major})</span>}
+            </li>
           ))}
         </ul>
       ) : (
         Object.entries(byMajor).map(([maj, students]) => (
-          <div key={maj}>
-            <h4>{maj || 'Undeclared'}</h4>
+          <div key={maj} style={{ marginBottom: '1rem' }}>
+            <h4 style={{ color: '#003366' }}>{maj || 'Undeclared'}</h4>
             <ul>
-              {students.map((s,i) => (
-                <li key={i}>{s.username}</li>
+              {students.map((s) => (
+                <li key={s.username} style={{ marginBottom: '0.25rem' }}>
+                  {s.username}
+                </li>
               ))}
             </ul>
           </div>

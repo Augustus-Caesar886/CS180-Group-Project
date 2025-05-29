@@ -10,8 +10,8 @@ function QuizMenuPage() {
     { question: "Do you prefer working alone or in a team?", options: ["Alone", "In a team", "Both"] },
   ];
   const majorOptions = [
-    { name: "Mechanical Engineering", description: "...", careers: [/*…*/] },
-    { name: "Computer Engineering", description: "...", careers: [/*…*/] },
+    { name: "Mechanical Engineering", description: "...", careers: [] },
+    { name: "Computer Engineering", description: "...", careers: [] },
   ];
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -37,7 +37,6 @@ function QuizMenuPage() {
     } else {
       const chosenMajor = determineMajor(answers);
 
-      // 1️⃣ Update student major in classroom
       const users = JSON.parse(localStorage.getItem('users')) || [];
       const user = users.find(u => u.username === username);
       if (user && user.studentCode) {
@@ -52,7 +51,6 @@ function QuizMenuPage() {
         }
       }
 
-      // 2️⃣ Navigate to result
       navigate('/result', {
         state: { username, answers, major: chosenMajor }
       });
@@ -61,19 +59,49 @@ function QuizMenuPage() {
 
   const q = questions[currentQuestionIndex];
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Quiz for {username}</h2>
-      <p>{q.question}</p>
-      {q.options.map((opt,i) => (
-        <div key={i}>
+    <div style={{
+      padding: '2rem',
+      backgroundColor: '#f5f7ff',
+      borderRadius: '12px',
+      maxWidth: '600px',
+      margin: '2rem auto',
+      boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+      fontFamily: 'Arial, sans-serif',
+      color: '#333'
+    }}>
+      <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#2b3a67' }}>
+        Quiz for {username}
+      </h2>
+      <p style={{ fontWeight: 'bold', marginBottom: '1rem' }}>{q.question}</p>
+      {q.options.map((opt, i) => (
+        <div key={i} style={{ marginBottom: '0.5rem' }}>
           <input
-            type="radio" name="ans" value={opt}
+            type="radio"
+            name="ans"
+            value={opt}
             checked={answers[currentQuestionIndex] === opt}
             onChange={handleAnswerChange}
-          /> <label>{opt}</label>
+            style={{ marginRight: '0.5rem' }}
+          />
+          <label>{opt}</label>
         </div>
       ))}
-      <button onClick={handleNext}>
+      <button
+        onClick={handleNext}
+        style={{
+          marginTop: '1rem',
+          padding: '0.5rem 1.5rem',
+          fontSize: '1rem',
+          backgroundColor: '#4e63ea',
+          color: 'white',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          transition: 'background-color 0.2s ease'
+        }}
+        onMouseOver={e => e.target.style.backgroundColor = '#3a4dc4'}
+        onMouseOut={e => e.target.style.backgroundColor = '#4e63ea'}
+      >
         {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish'}
       </button>
     </div>
