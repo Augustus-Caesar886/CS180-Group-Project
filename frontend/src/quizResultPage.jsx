@@ -17,61 +17,38 @@ function QuizResultsPage() {
       if (storedAnswers) { // if there is data
         const parsedAnswers = JSON.parse(storedAnswers); // parse from json string to javascript array
         setAnswers(parsedAnswers); // update state with answers
-        const resultMajor = determineMajor(parsedAnswers); // determine major
-        setMajor(resultMajor); //sets the result's (major)
+        
+        fetch('http://localhost:8080/quiz/recommendation')
+          .then(res => res.json())
+          .then(data=> {
+            const recommendedMajor = data.recommendedMajor;
+            setMajor({
+            name: recommendedMajor,
+            description: `Your interests align with ${recommendedMajor}.`,
+            careers: [],
+          });
 
-        fetch('http://localhost:8080/updateMajor', {
+        return fetch('http://localhost:8080/updateMajor', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({username, major: resultMajor.name,}),
-        })
-        .then(res => res.json()) //once done fetching, then take apart into JS object 
+          body: JSON.stringify({username, major: recommendedMajor}),
+        });
+      })
+        .then(res => res?.json?.()) //once done fetching, then take apart into JS object 
         .then(data => {          // then output error if didn't return 'success'
           if(data.status !== 'success'){
-            console.error('Major update failed:', data.message);
+            console.error('Major update failed:', data?.message);
           }
         })
         .catch(e => {
-          console.error('Error updating major:', e);
-        })
+          console.error('Error getting recommendation or updating major:', e);
+        });
       }
     }
   }, []);
-
-  // basic example logic, replace with your real logic later
-  function determineMajor(answers) {
-    const score = answers.reduce((acc, answer) => {
-      if (['Math', 'Physics'].includes(answer)) return acc + 1;
-      return acc;
-    }, 0);
-
-    if (score >= 2) {
-      return {
-        name: "Computer Engineering",
-        description:
-          "You enjoy logical thinking, math, and hardware/software systems.",
-        careers: [
-          "Software Developer",
-          "Embedded Systems Engineer",
-          "Hardware Engineer",
-        ],
-      };
-    } else {
-      return {
-        name: "Mechanical Engineering",
-        description:
-          "You enjoy building things and understanding mechanics.",
-        careers: [
-          "Mechanical Engineer",
-          "Product Designer",
-          "Automotive Engineer",
-        ],
-      };
-    }
-  }
-
+  
   const handleGoBack = () => {
     navigate('/student', { state: { username } }); // sends user back to student menu
   };
@@ -85,22 +62,14 @@ function QuizResultsPage() {
       ) : (
         <>
           <p>Thanks for completing the quiz, {username}!</p>
-          <h3>Your Answers:</h3>
-          <ul>
-            {answers.map((answer, index) => (
-              <li key={index}>
-                Question {index + 1}: {answer || 'No answer given'}
-              </li>
-            ))}
-          </ul>
 
-          {major && (
+          {major?.name && (
             <div>
               <h3>Recommended Major: {major.name}</h3>
               <p>{major.description}</p>
               <strong>Career Paths:</strong>
               <ul>
-                {major.careers.map((career, idx) => (
+                {(major.careers || []).map((career, idx) => (
                   <li key={idx}>{career}</li>
                 ))}
               </ul>
